@@ -1,5 +1,5 @@
 SYNOPSIS
-    Quick summary of what the module does.
+    Command line interface to Etsy V2 OAuth API
 
     Register for a developer account here:
     http://developer.etsy.com/member/register Then register your app for a
