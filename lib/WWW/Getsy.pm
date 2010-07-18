@@ -5,7 +5,7 @@ our $VERSION = '0.999001';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+Command line interface to Etsy V2 OAuth API
 
 Register for a developer account here: http://developer.etsy.com/member/register
 Then register your app for a V2 Sandbox key: http://developer.etsy.com/apps/register
