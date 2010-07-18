@@ -1,0 +1,40 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dumper;
+
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+use WWW::Getsy;
+
+my $app = WWW::Getsy->new_with_options();
+
+
+if ($app->authorized) {
+    my $response = $app->oauth_request();
+
+#    my $response = $app->oauth_get('http://openapi.etsy.com/v2/private/users/__SELF__', {includes => 'Shops'});
+
+#    my $response = $app->oauth_get('http://openapi.etsy.com/v2/private/shops/5933707/listings/active');
+
+#    my $args = {title => 'invisible antique chair2'};
+#    my $response = $app->oauth_put('http://openapi.etsy.com/v2/private/listings/51455722', $args);
+
+
+#    my $args = {
+#        title => "jg_test_10",
+#        origin_country_id => 193,
+#        primary_cost => 2,
+#        secondary_cost => 2,
+#    };
+#    my $response = $app->oauth_post('http://openapi.etsy.com/v2/private/shipping/templates', $args);
+
+#    my $response = $app->oauth_delete('http://openapi.etsy.com/v2/private/shipping/templates/6695366');
+
+#    my $response = $app->oauth_delete('http://openapi.etsy.com/v2/private/users/__SELF__/favorites/listings/44740293');
+
+#    print $response->content."\n";
+    print Dumper($app->decode($response->content));
+    exit;
+}
