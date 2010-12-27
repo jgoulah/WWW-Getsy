@@ -4,8 +4,8 @@ name 'WWW-Getsy';
 all_from 'lib/WWW/Getsy.pm';
 
 requires 'Net::OAuth::Simple';
-requires 'Moose';
-requires 'MooseX::Declare';
+requires 'Moose' => '1.21';
+requires 'MooseX::Declare' => '0.34';
 requires 'MooseX::Types';
 requires 'File::HomeDir';
 requires 'JSON::XS';

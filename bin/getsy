@@ -2,7 +2,6 @@
 
 use strict;
 use warnings;
-use Data::Dumper;
 
 use FindBin;
 use lib "$FindBin::Bin/../lib";
@@ -12,5 +11,5 @@ my $app = WWW::Getsy->new_with_options();
 
 if ($app->authorized) {
     my $response = $app->oauth_request();
-    print Dumper($app->decode($response->content));
+    $app->pretty_print($response->content);
 }

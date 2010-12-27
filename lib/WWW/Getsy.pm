@@ -211,19 +211,23 @@ class WWW::Getsy with MooseX::Getopt {
     }
 
     method oauth_put() {
-        # use 'get' version of put since oauth::simple doesn't support it yet
-        $self->params->{method} = 'PUT';
-        return $self->oauth_client->make_restricted_request($self->url, 'GET', %{$self->params});
+        return $self->oauth_client->make_restricted_request($self->url, 'PUT', %{$self->params});
     }
 
     method oauth_delete() {
-        # use 'get' version of delete since oauth::simple doesn't support it yet
-        $self->params->{method} = 'DELETE';
-        return $self->oauth_client->make_restricted_request($self->url, 'GET', %{$self->params});
+        return $self->oauth_client->make_restricted_request($self->url, 'DELETE', %{$self->params});
     }
 
     method decode(Str $json) {
         decode_json $json;
+    }
+
+    method encode(HashRef $json) {
+        JSON::XS->new->utf8->pretty->encode($json);
+    }
+
+    method pretty_print(Str $json) {
+        print $self->encode($self->decode($json));
     }
 
 }

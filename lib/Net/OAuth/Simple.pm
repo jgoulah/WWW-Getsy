@@ -712,6 +712,13 @@ sub _make_request {
      my $req;
     if ($method eq 'post') {
          $req = HTTP::Request::Common::POST($uri, Content => $params);
+    } elsif ($method eq 'put') {
+        $req = HTTP::Request::Common::POST $uri, Content => $params;
+        $req->method('PUT');
+    } elsif ($method eq 'delete') {
+         my $request_url = URI->new($url);
+        $request_url->query_form(%$params);
+        $req = HTTP::Request::Common::DELETE($request_url);
     } else {
          my $request_url = URI->new($url);
         $request_url->query_form(%$params);
