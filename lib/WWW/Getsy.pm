@@ -37,7 +37,7 @@ A full list of methods available here
 =cut
 
 class WWW::Getsy with MooseX::Getopt {
-    use Net::OAuth::Simple; 
+    use WWW::Getsy::OAuth;
     use File::HomeDir qw(home);
     use File::Spec::Functions qw(catfile);
     use JSON::XS;
@@ -145,7 +145,7 @@ class WWW::Getsy with MooseX::Getopt {
 
     has 'oauth_client' => ( 
         metaclass => 'NoGetopt',
-        isa => 'Net::OAuth::Simple', 
+        isa => 'WWW::Getsy::OAuth',
         is => 'ro', 
         lazy_build => 1,
         handles => [qw/ 
@@ -154,7 +154,7 @@ class WWW::Getsy with MooseX::Getopt {
     );
 
     method _build_oauth_client {
-        Net::OAuth::Simple->new( 
+        WWW::Getsy::OAuth->new(
             tokens => {
                 consumer_key => $self->consumer_key,
                 consumer_secret => $self->consumer_secret,

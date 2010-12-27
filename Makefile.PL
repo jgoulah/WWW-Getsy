@@ -3,7 +3,7 @@ use inc::Module::Install '0.68';
 name 'WWW-Getsy';
 all_from 'lib/WWW/Getsy.pm';
 
-requires 'Net::OAuth::Simple';
+requires 'Net::OAuth::Simple' => '1.5';
 requires 'Moose' => '1.21';
 requires 'MooseX::Declare' => '0.34';
 requires 'MooseX::Types';
