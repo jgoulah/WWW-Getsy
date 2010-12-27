@@ -1,6 +1,6 @@
 use MooseX::Declare;
 
-our $VERSION = '0.999001';
+our $VERSION = '0.999002';
 
 
 =head1 SYNOPSIS
