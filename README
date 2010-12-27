@@ -1,3 +1,6 @@
+NAME
+    WWW::Getsy - Command line interface to Etsy V2 OAuth API
+
 SYNOPSIS
     Command line interface to Etsy V2 OAuth API
 

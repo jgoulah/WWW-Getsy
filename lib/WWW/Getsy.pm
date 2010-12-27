@@ -1,7 +1,10 @@
 use MooseX::Declare;
 
-our $VERSION = '0.999002';
+our $VERSION = '0.999003';
 
+=head1 NAME
+    
+WWW::Getsy - Command line interface to Etsy V2 OAuth API
 
 =head1 SYNOPSIS
 
