@@ -11,6 +11,7 @@ requires 'File::HomeDir';
 requires 'JSON::XS';
 requires 'MooseX::Getopt';
 requires 'Data::Dumper';
+requires 'MooseX::NonMoose';
 
 # generate README file
 if ($Module::Install::AUTHOR) {
