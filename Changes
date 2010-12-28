@@ -1,5 +1,9 @@
 Revision history for WWW-Getsy
 
+0.999004  2010-12-28
+    - using auto_provides_class in Makefile.PL so it indexes properly 
+    - make error information slightly more informative
+
 0.999003  2010-12-27
     - added a title 
 

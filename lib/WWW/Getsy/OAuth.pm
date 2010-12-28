@@ -54,7 +54,7 @@ around '_make_request' => sub {
         $req = HTTP::Request::Common::GET($request_url);
     }
     my $response = $self->{browser}->request($req);
-    die "$method on $request failed: ".$response->status_line
+    die "$method on $uri failed: ".$response->status_line ."\n". $response->content
       unless ( $response->is_success );
 
     return $response;
