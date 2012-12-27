@@ -80,22 +80,22 @@ class WWW::Getsy with MooseX::Getopt {
         required => 1,
         lazy => 1,
         default => method {
-            return "http://openapi.etsy.com/".$self->v2_path."/private".$self->path;
+            return "http://". $self->api_domain ."/v2/private".$self->path;
         }
     );
 
-    has 'v2_path' => (
+    has 'api_domain' => (
         metaclass => 'NoGetopt',
         is => 'ro',
         isa => Str,
         required => 1,
         lazy => 1,
         default => method {
-            my $v2_path = 'v2';
+            my $api_domain = 'openapi.etsy.com';
             if ($self->sandbox) {
-                $v2_path = 'v2/sandbox';
+                $api_domain = 'sandbox.openapi.etsy.com';
             }
-            return $v2_path;
+            return $api_domain;
         }
     );
 
@@ -166,8 +166,8 @@ class WWW::Getsy with MooseX::Getopt {
             protocol_version => '1.0a',
             urls   => {
                 authorization_url => "http://www.etsy.com/oauth/signin",
-                request_token_url => "http://openapi.etsy.com/".$self->v2_path."/oauth/request_token",
-                access_token_url  => "http://openapi.etsy.com/".$self->v2_path."/oauth/access_token",
+                request_token_url => "http://". $self->api_domain ."/v2/oauth/request_token",
+                access_token_url  => "http://". $self->api_domain ."/v2/oauth/access_token",
             },
             callback => 'oob',
         );
