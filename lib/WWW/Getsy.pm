@@ -1,7 +1,7 @@
 use MooseX::Declare;
 use 5.008008;
 
-our $VERSION = '0.999005';
+our $VERSION = '0.999006';
 
 =head1 NAME
     
@@ -286,7 +286,7 @@ L<http://search.cpan.org/dist/WWW-Getsy/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 John Goulah.
+Copyright 2012 John Goulah.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

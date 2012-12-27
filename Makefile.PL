@@ -1,4 +1,4 @@
-use inc::Module::Install '0.68';
+use inc::Module::Install '1.06';
 
 name 'WWW-Getsy';
 all_from 'lib/WWW/Getsy.pm';
@@ -21,6 +21,5 @@ if ($Module::Install::AUTHOR) {
 install_script 'bin/getsy';
 
 auto_install;
-auto_provides_class;
 WriteAll;
 
