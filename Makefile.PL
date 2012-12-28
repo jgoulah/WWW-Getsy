@@ -21,5 +21,6 @@ if ($Module::Install::AUTHOR) {
 install_script 'bin/getsy';
 
 auto_install;
+auto_provides_class;
 WriteAll;
 

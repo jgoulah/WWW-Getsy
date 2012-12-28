@@ -1,7 +1,7 @@
 use MooseX::Declare;
 use 5.008008;
 
-our $VERSION = '0.999006';
+our $VERSION = '0.999007';
 
 =head1 NAME
     
