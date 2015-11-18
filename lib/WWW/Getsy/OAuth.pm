@@ -7,6 +7,7 @@ use HTTP::Request::Common ();
 use Net::OAuth;
 require Net::OAuth::Request;
 extends 'Net::OAuth::Simple';
+use File::Slurp;
 
 around '_make_request' => sub {
     my $orig = shift;
@@ -40,7 +41,29 @@ around '_make_request' => sub {
     my $params = $request->to_hash;
      my $req;
     if ($method eq 'post') {
-         $req = HTTP::Request::Common::POST($uri, Content => $params);
+
+        if ($extra{extra_params}->{image}) {
+
+            my $image_data = read_file($extra{extra_params}->{image}, binmode => ':raw' );
+
+            $req = HTTP::Request::Common::POST($request->to_url, 
+                Content_Type => 'multipart/form-data', 
+                Content => [
+                    "image" => [
+                        undef, 
+                        "image.jpg", 
+                        Content => $image_data, 
+                        Content_Type => 'image/jpeg'
+                    ], 
+                    "rank" => $extra{extra_params}->{rank}
+                ]
+            );
+
+        }
+        else {
+            $req = HTTP::Request::Common::POST($uri, Content => $params);
+        }
+
     } elsif ($method eq 'put') {
         $req = HTTP::Request::Common::POST $uri, Content => $params;
         $req->method('PUT');
@@ -53,7 +76,9 @@ around '_make_request' => sub {
         $request_url->query_form(%$params);
         $req = HTTP::Request::Common::GET($request_url);
     }
+    
     my $response = $self->{browser}->request($req);
+
     die "$method on $uri failed: ".$response->status_line ."\n". $response->content
       unless ( $response->is_success );
 
